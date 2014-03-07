@@ -18,9 +18,9 @@ public class MessageLoop<E> implements LoopADT
 	*/
 	public MessageLoop()
 	{
-		firstNode = new DblListnode<E>(lastNode, null, currNode);
-		currNode = new DblListnode<E>(firstNode, null, lastNode);
-		lastNode = new DblListnode<E>(currNode, null, firstNode);
+		firstNode = new DblListnode<E>(lastNode, null, lastNode);
+		currNode = firstNode;
+		lastNode = new DblListnode<E>(firstNode, null, firstNode);
 	    numItems = 0;
 	}
 
