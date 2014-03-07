@@ -8,7 +8,8 @@ import java.util.Iterator;
  * 
  * @author TA for CS 367, Spring 2014
  */
-public interface LoopADT<E> {
+public interface LoopADT<E> 
+{
     
     /**
      * Adds the given item immediately before the current 
@@ -64,6 +65,7 @@ public interface LoopADT<E> {
 
     /**
      * Returns the number of items in this Loop.
+     * 
      * @return the number of items in this Loop
      */
     int size();
@@ -71,6 +73,7 @@ public interface LoopADT<E> {
     /**
      * Returns an iterator for this Loop.
      * Rather that using the Iterable interface we'll combine it with the ADT.
+     * 
      * @return an iterator for this Loop
      */
     Iterator<E> iterator();
