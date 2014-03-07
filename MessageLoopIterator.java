@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class MessageLoopIterator implements Iterator
+public class MessageLoopIterator<E> implements Iterator
 {
 	public MessageLoopIterator(DblListnode<E> dblListnode)
 	{

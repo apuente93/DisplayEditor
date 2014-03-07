@@ -3,16 +3,25 @@ import java.util.Iterator;
 
 public class MessageLoop<E> implements LoopADT
 {
-	//The circular, doubly-linked list data structure used 
-	//to contain the message
-	private DblListnode<E> DblLinkedList = new DblListnode<E>();
+	//A reference to the first node in the list
+	private DblListnode<E> firstNode;
+	//A reference to the last node in the list
+	private DblListnode<E> lastNode;
+	//A reference to the current node in the list
+	private DblListnode<E> currNode;
+	//The number of items in the list
+	private int numItems;
+	
 	/**
 	* The constructor of the message loop class. It creates
 	* an empty message loop
 	*/
 	public MessageLoop()
 	{
-		
+		firstNode = new DblListnode<E>(lastNode, null, currNode);
+		currNode = new DblListnode<E>(firstNode, null, lastNode);
+		lastNode = new DblListnode<E>(currNode, null, firstNode);
+	    numItems = 0;
 	}
 
 	/**
@@ -91,12 +100,12 @@ public class MessageLoop<E> implements LoopADT
     */
 	public int size() 
 	{
-		return 0;
+		return numItems;
 	}
 
 	/**
     * Returns an iterator for this Loop.
-    * Rather that using the Iterable interface we'll combine it with the ADT.
+    * Rather than using the Iterable interface we'll combine it with the ADT.
     * @return an iterator for this Loop
     */
 	public Iterator iterator() 
