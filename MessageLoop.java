@@ -1,12 +1,8 @@
 import java.util.Iterator;
 
 
-public class MessageLoop<E> implements LoopADT
+public class MessageLoop<E> implements LoopADT<E>
 {
-	//A reference to the first node in the list
-	private DblListnode<E> firstNode;
-	//A reference to the last node in the list
-	private DblListnode<E> lastNode;
 	//A reference to the current node in the list
 	private DblListnode<E> currNode;
 	//The number of items in the list
@@ -18,9 +14,7 @@ public class MessageLoop<E> implements LoopADT
 	*/
 	public MessageLoop()
 	{
-		firstNode = new DblListnode<E>(lastNode, null, lastNode);
-		currNode = firstNode;
-		lastNode = new DblListnode<E>(firstNode, null, firstNode);
+		currNode = new DblListnode<E>();
 	    numItems = 0;
 	}
 
@@ -31,9 +25,27 @@ public class MessageLoop<E> implements LoopADT
     * 
     * @param item - the item to add
     */
-	public void addBefore(Object item) 
+	public void addBefore(E item) 
 	{
+		if (currNode.getData() == null)
+		{
+			currNode.setData(item);
+			currNode.setPrev(currNode);
+			currNode.setNext(currNode);
+			numItems++;
+		}
 		
+		else
+		{
+			//The new DblListnode that holds the given item that 
+			//will come before the current node
+			DblListnode<E> newCurr = new DblListnode<E>(
+			currNode.getPrev(), item, currNode);
+			currNode.getPrev().setNext(newCurr);
+			currNode.setPrev(newCurr);
+			currNode = newCurr;
+			numItems++;
+		}	
 	}
 
 	/**
@@ -43,9 +55,26 @@ public class MessageLoop<E> implements LoopADT
     * 
     * @param item - the item to add
     */
-	public void addAfter(Object item) 
+	public void addAfter(E item) 
 	{
+		if (currNode.getData() == null)
+		{
+			currNode.setData(item);
+			currNode.setPrev(currNode);
+			currNode.setNext(currNode);
+		}
 		
+		else
+		{
+			//The new DblListnode that holds the given item that 
+			//will come after the current node
+			DblListnode<E> newCurr = new DblListnode<E>(
+			currNode, item, currNode.getNext());
+			currNode.setNext(newCurr);
+			currNode.getNext().setPrev(newCurr);
+			currNode = newCurr;
+			numItems++;
+		}		
 	}
 
 	/**
@@ -55,9 +84,13 @@ public class MessageLoop<E> implements LoopADT
     * @return the current item
     * @throws EmptyLoopException if the Loop is empty
     */
-	public Object getCurrent() 
+	public E getCurrent() 
 	{
-		return null;
+		if (currNode.getData() == null)
+		{
+			throw new EmptyLoopException();
+		}
+		return currNode.getData();
 	}
 
 	/**
@@ -69,9 +102,21 @@ public class MessageLoop<E> implements LoopADT
     * @return the removed item
     * @throws EmptyLoopException if the Loop is empty
     */
-	public Object removeCurrent() 
+	public E removeCurrent() 
 	{
-		return null;
+		if (currNode.getData() == null)
+		{
+			throw new EmptyLoopException();
+		}
+		
+		else
+		{
+			currNode.getPrev().setNext(currNode.getNext());
+			currNode.getNext().setPrev(currNode.getPrev());
+			currNode = currNode.getNext();
+			numItems--;
+			return currNode.getData();
+		}
 	}
 
 	/**
@@ -81,7 +126,15 @@ public class MessageLoop<E> implements LoopADT
     */
 	public void forward() 
 	{
+		if (currNode.getData() == null)
+		{
+			return;
+		}
 		
+		else
+		{
+			currNode = currNode.getNext();
+		}
 	}
 
 	/**
@@ -91,7 +144,15 @@ public class MessageLoop<E> implements LoopADT
     */
 	public void back() 
 	{
+		if (currNode.getData() == null)
+		{
+			return;
+		}
 		
+		else
+		{
+			currNode = currNode.getPrev();
+		}
 	}
 
 	/**
