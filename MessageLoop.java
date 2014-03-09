@@ -34,7 +34,6 @@ public class MessageLoop<E> implements LoopADT<E>
 			currNode.setNext(currNode);
 			numItems++;
 		}
-		
 		else
 		{
 			//The new DblListnode that holds the given item that 
@@ -62,6 +61,7 @@ public class MessageLoop<E> implements LoopADT<E>
 			currNode.setData(item);
 			currNode.setPrev(currNode);
 			currNode.setNext(currNode);
+			numItems++;
 		}
 		
 		else

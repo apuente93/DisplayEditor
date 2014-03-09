@@ -1,10 +1,14 @@
 import java.util.Iterator;
 
-public class MessageLoopIterator<E> implements Iterator
+public class MessageLoopIterator<E> implements Iterator<E>
 {
+	private DblListnode<E> currNode = new DblListnode<E>();
+	private int curPos;  
+	
 	public MessageLoopIterator(DblListnode<E> dblListnode)
 	{
-		
+		currNode = dblListnode;
+		curPos = 0;
 	}
 	
 	public boolean hasNext() 
@@ -12,10 +16,16 @@ public class MessageLoopIterator<E> implements Iterator
 		return false;
 	}
 
-	public Object next() 
+	public E next() 
 	{
-		return null;
-	}
+		if (!hasNext()) 
+		{
+            throw new NoSuchElementException();
+        }
+        Object result = list.get(curPos);
+        curPos++;
+        return result;
+    }
 
 	public void remove() 
 	{
