@@ -1,10 +1,31 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Main Class File:  DisplayEditor.java
+// File:             MessageLoop.java
+// Semester:         CS302 Spring 2014
+//
+// Author:           Alejandro Puente
+// Email:            apuente@wisc.edu
+// CS Login:         alejandr
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      Lecture 1
+//////////////////////////// 80 columns wide //////////////////////////////////
 import java.util.Iterator;
 
-
+/**
+ * The MessageLoop class that represents a circular doubly linked chain of
+ * data.
+ *
+ * <p>Bugs: None
+ *
+ * @author Alejandro Puente
+ */
 public class MessageLoop<E> implements LoopADT<E>
 {
 	//A reference to the current node in the list
 	private DblListnode<E> currNode;
+	//A reference to the first node in the list
+	private DblListnode<E> firstNode;
 	//The number of items in the list
 	private int numItems;
 	
@@ -15,12 +36,13 @@ public class MessageLoop<E> implements LoopADT<E>
 	public MessageLoop()
 	{
 		currNode = new DblListnode<E>();
+		firstNode = new DblListnode<E>();
 	    numItems = 0;
 	}
 
 	/**
     * Adds the given item immediately before the current 
-    * item.  After the new item has been added, the new item becomes the 
+    * item.  After the new item has been added, the new item becomes the
     * current item.
     * 
     * @param item - the item to add
@@ -49,7 +71,7 @@ public class MessageLoop<E> implements LoopADT<E>
 
 	/**
     * Adds the given item immediately after the current 
-    * item.  After the new item has been added, the new item becomes the 
+    * item.  After the new item has been added, the new item becomes the
     * current item.
     * 
     * @param item - the item to add
@@ -61,6 +83,7 @@ public class MessageLoop<E> implements LoopADT<E>
 			currNode.setData(item);
 			currNode.setPrev(currNode);
 			currNode.setNext(currNode);
+			firstNode = currNode;
 			numItems++;
 		}
 		
@@ -71,7 +94,7 @@ public class MessageLoop<E> implements LoopADT<E>
 			DblListnode<E> newCurr = new DblListnode<E>(
 			currNode, item, currNode.getNext());
 			currNode.setNext(newCurr);
-			currNode.getNext().setPrev(newCurr);
+			firstNode.setPrev(newCurr);
 			currNode = newCurr;
 			numItems++;
 		}		
@@ -171,7 +194,8 @@ public class MessageLoop<E> implements LoopADT<E>
     */
 	public Iterator iterator() 
 	{
-		return null;
+		MessageLoopIterator<E> iterator = new MessageLoopIterator<E>(currNode);
+		return iterator;
 	}
 
 }

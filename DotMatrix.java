@@ -3,7 +3,7 @@ import java.util.*;
 
 /*DO NOT MODIFY THIS FILE*/
 
-
+ 
 /**
  * The DotMatrix class stores a mapping of individual characters and their 
  * respective Dot Matrix representations. It reads a text file that

@@ -1,3 +1,22 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Main Class File:  DisplayEditor.java
+// File:             DblListnode.java
+// Semester:         CS302 Spring 2014
+//
+// Author:           Alejandro Puente
+// Email:            apuente@wisc.edu
+// CS Login:         alejandr
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      Lecture 1
+//////////////////////////// 80 columns wide //////////////////////////////////
+/**
+ * The DblListnode class that represents a single node in the MessageLoop.
+ *
+ * <p>Bugs: None
+ *
+ * @author Alejandro Puente
+ */
 public class DblListnode<E> 
 {
 	//Pointer to the previous node in the list
@@ -85,7 +104,8 @@ public class DblListnode<E>
     }
  
     /**
-    * Set the next DblListnode of the current DblListnode to the given DblListnode
+    * Set the next DblListnode of the current DblListnode to the given 
+    * DblListnode
     * 
     * @param n - the given next DblListnode
     * 
@@ -96,7 +116,8 @@ public class DblListnode<E>
     }
  
     /**
-    * Set the previous DblListnode of the current DblListnode to the given DblListnode
+    * Set the previous DblListnode of the current DblListnode to the given
+    * DblListnode
     * 
     * @param p - the given previous DblListnode
     * 

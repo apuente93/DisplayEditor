@@ -1,8 +1,22 @@
-
+///////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Main Class File:  DisplayEditor.java
+// File:             EmptyLoopException.java
+// Semester:         CS302 Spring 2014
+//
+// Author:           Alejandro Puente
+// Email:            apuente@wisc.edu
+// CS Login:         alejandr
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      Lecture 1
+//////////////////////////// 80 columns wide //////////////////////////////////
+/**
+ * The EmptyLoopException class extends RuntimeException.
+ *
+ * <p>Bugs: None
+ *
+ * @author Alejandro Puente
+ */
 public class EmptyLoopException extends RuntimeException
 {
-	public EmptyLoopException()
-	{
-		super("no messages");
-	}
 }
